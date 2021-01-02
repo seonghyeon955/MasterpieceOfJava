@@ -1,0 +1,33 @@
+키보드로 입력받은 주민번호에서 문자열을 '-'로 분리, 주민번호 앞자리만 출력하는 프로그램을 작성하라.
+구분문자를 설정할땐 Scaaner클래스의 useDelimiter()클래스를 이용할것.
+
+
+풀이
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class p2 {
+	public static void main(String[] args) throws IOException {
+		
+		
+		System.out.println("주민번호를 입력해주세요 : ");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String jumin = br.readLine();
+//		String juminn[] = jumin.split("-");
+//		for(String juminnn : juminn) {
+//			System.out.println(juminnn);
+//		}
+		StringTokenizer st = new StringTokenizer(jumin, "-");
+		System.out.println(st.nextToken());
+		
+		//or
+		//Scanner scan = new Scanner(System.in).useDelimiter("\\s;-");
+		
+		
+		
+	}
+}
