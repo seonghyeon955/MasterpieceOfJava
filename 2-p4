@@ -31,12 +31,14 @@ import java.io.BufferedReader;
           System.out.println("박수 짝짝 "); //10의자리+1의자리가 모두 3,6,9인 경우  
         }else{
           System.out.println("박수 짝"); //1의자리 수만 3,6,9인 경우
-        }else if(num/10 ==3 || num/10==6 || num/10==9 ){
+      }//if end
+        
+        
+      else if(num/10 ==3 || num/10==6 || num/10==9 ){
           System.out.println("박수 짝");//10의자리 수가 3,6,9인 경우
-        }else{
+      }else{
           System.out.println("해당없음"); //어느쪽에도 해당이 되지 않는 경우
       }
-      }//if end
     }//else if end
   }//main end
  
