@@ -1,0 +1,12 @@
+"Sorry~~"을 화면에 출력하는 자바프로그램을 작성하라. 
+프로젝트 이름은 Sorry로 한다 
+
+
+풀이
+
+
+public class Sorry {
+	public static void main(String[]args) {
+		System.out.println("Sorry~~~");
+	}
+}
