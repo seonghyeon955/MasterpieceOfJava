@@ -4,3 +4,30 @@
 출력예시) 
 점 (x,y)의 좌표를 입력하시오 >> 60 60
 사각형 안에 점이 있습니다.
+
+
+풀이)
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+import java.io.BufferedReader;
+
+public class p7 {
+	public static void main(String[] args)throws IOException{
+		System.out.print("점 (x,y)의 좌표를 입력하시오 >> ");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		int x = Integer.parseInt(st.nextToken());
+		int y= Integer.parseInt(st.nextToken());
+	
+	
+			if( (50<=x && x<=100)&&(50<=y && y<=100) )
+					System.out.println("사각형 안에 점이 있습니다.");
+			else 
+					System.out.println("사각형 안에 점이 없습니다.");
+			
+			
+		
+	}
+}
