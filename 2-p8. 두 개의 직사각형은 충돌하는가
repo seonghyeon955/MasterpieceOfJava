@@ -5,3 +5,38 @@
 출력예시) 
 두 점 (x1,y1), (x2,y2)의 좌표를 입력하시오 >> 60 60 150 150
 사각형이 겹칩니다.
+
+
+풀이)
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+public class p8 {
+	public static void main(String[] args) throws IOException{
+		System.out.println("두 점 (x1,y1), (x2,y2)의 좌표를 입력하시오 >> ");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		int x1 = Integer.parseInt(st.nextToken());
+		int x2 = Integer.parseInt(st.nextToken());
+		int y1 = Integer.parseInt(st.nextToken());
+		int y2 = Integer.parseInt(st.nextToken());
+		
+		if( 
+				((x1 >= 50 && x1 <= 100) && (y1 >= 50 && y1 <= 100)) || 
+				((x2 >= 50 && x2 <= 100) && (y2 >= 50 && y2 <= 100)) || 
+				
+				((y1 >= 50 && y1 <= 100) && (x2 >= 50 && x2 <= 100)) || 
+				((x1 >= 50 && x1 <= 100) && (y2 >= 50 && y2 <= 100)) || 
+				
+				
+				((x1 <= 50 && y1 <= 50) && (x2 >= 100 && y2 >= 100))
+		)
+			System.out.println("두 사각형이 겹칩니다.");
+		else 
+			System.out.println("두 사각형이 겹치지 않습니다.");
+	}
+}
