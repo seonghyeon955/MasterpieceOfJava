@@ -1,0 +1,28 @@
+키보드로부터 임의의 정수를 입력받고 *를 출력하는 프로그램을 작성하라. 예를 들어 5를 입력받았으면 그 결과는 다음과 같다.
+임의의 정수를 입력하시오 >> 5
+*****
+****
+***
+**
+*
+
+
+
+
+풀이)
+
+import java.util.Scanner;
+
+public class q2{
+  public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    int num = sc.nextInt();
+    for(int i=0; i<num ; i++){
+      for(int k=num ; k>i ; k--){
+        System.out.print("*");
+      }
+      System.out.println(" ");
+    }//for문 큰거 end
+    
+  }
+}
