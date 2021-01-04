@@ -1,0 +1,59 @@
+숨겨진 카드의 수를 맞추는 게임을 만들어보자. 0~99까지의 임의의 수를 가진 카드를 한 장 숨기고 이 카드의 수를 맞추는 게임이다.
+카드 속의 수가 12인 경우, 수를 맞추는 사람이 55라고 입력시 "더 낮게", 11 입력시 "더 높게" 식으로 범위를 좁혀가며 수를 맞춘다.
+게임 반복을 위해 y/n을 묻고 n인 경우 종료한다.(다시하시겠습니까(y/n))
+
+풀이)
+
+import java.io.IOException;
+import java.util.Random;
+import java.util.Scanner;
+
+public class q1 {
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int max=99;
+		int min=0;
+		Random r = new Random(); //컴퓨터의 랜덤숫자
+		int num = r.nextInt(100);//컴퓨터의 랜덤숫자
+		System.out.println("수를 결정하였습니다.맞추어 보세요!");
+		System.out.print("임의의 수를 작성해주세요(n: 0~99) : ");
+		
+		while(true) {//yourNum!=num
+			
+			int yourNum = sc.nextInt();//상대가 작성한 숫자
+			
+			if(yourNum<0 || yourNum>100) {
+				System.out.println("범위를 초과하였습니다.");
+			}else {
+				if(yourNum>num) {
+					System.out.println("Down");
+					continue;
+					//max = yourNum;
+				}
+				else if(yourNum<num) {
+					System.out.println("Up");
+					continue;
+					//min = yourNum;
+				}
+				else if(yourNum == num) {
+					System.out.print("값을 맞추셨습니다! 게임을 계속 진행할까요?(y/n) : ");
+					if(sc.next().equals("y")) { 
+						System.out.print("임의의 수를 작성해주세요(n:0~99) : ");
+						continue;
+					}else{
+						System.out.println("게임을 종료합니다.");
+						System.exit(0);
+					}
+				}//같은경우
+			}
+		}//while end
+	}
+}
+
+
+**break : 반복문을 빠져나옴
+**continue : 바로 아래코드를 무시하고 반복문 실행
+
