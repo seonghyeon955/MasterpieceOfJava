@@ -1,0 +1,12 @@
+다음과 같이 작동하는 Add.java를 작성하라. 명령행 인자 중 정수만 골라 합을 구하라
+
+출력)
+C:\tmp>java Add 2 3 "aa" 5 6.5
+10
+C:\tmp>java Add 2 3 "Hello" 3 4 4.3 'c'
+7
+
+C\tmp>
+
+풀이)
+
