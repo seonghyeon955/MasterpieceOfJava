@@ -24,5 +24,11 @@ public class Main{
   }
 }
 
-**Math.round : 
-**Math.random : 
+**Math.round() : 실수의 첫번째 자리를 반올림 하여 정수로 리턴
+  Math.ceil() : 반올림이 아닌 올림
+  Math.floor() : 버림
+  String.format() : 리턴되는 문자열 형태를 지정하는 함수
+    ex) 
+    double pie = 3.14159265358979;
+    System.out.println(String.format("%.2f",pie)); -> pie = 3.14;
+**Math.random : 무작위의 숫자(double형)를 반환해주는 메소드
