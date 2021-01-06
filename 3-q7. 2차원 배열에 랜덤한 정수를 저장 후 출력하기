@@ -5,3 +5,24 @@ int i=(int)Math.round(Math.random() * 9 + 1);
 
 풀이)
 
+public class Main{
+  public static void main(String[]args) {
+    int[][]arr = new int[4][4];
+    for(int k=0; k<arr.length ; k++){
+      for(int j=0; j<arr[i].length; i++){
+        int i= (int)Math.round(Math.random() * 9 + 1);
+        arr[k][j] = i;
+      }
+    }
+    for(int l=0; l<arr.length; l++){
+      for(int m=0; m<arr[l].length ; m++){
+        System.out.print(arr[l][m] + " ");
+      }
+      System.out.println();
+    }
+    
+  }
+}
+
+**Math.round : 
+**Math.random : 
