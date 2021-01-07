@@ -10,3 +10,33 @@ C\tmp>
 
 풀이)
 
+mport java.io.*;
+import java.util.*;
+
+/*
+ 다음과 같이 작동하는 Add.java를 작성하라. 명령행 인자 중 정수만 골라 합을 구하라
+	출력)
+	C:\tmp>java Add 2 3 "aa" 5 6.5
+	10
+	C:\tmp>java Add 2 3 "Hello" 3 4 4.3 'c'
+	7
+ */
+public class q10 {
+	public static void main(String[]args) throws IOException{
+		int sum=0;
+		for(int i=0; i<args.length ; i++) {
+			try {
+				sum += Integer.parseInt(args[i]);
+			}catch(NumberFormatException e) {
+				continue;
+			}
+		}
+		System.out.println("합 : " + sum);
+	}
+}
+
+**args 에 데이터를 넣고 결과값을 보려면 Run As -> Run Configurations -> Arguments -> Program arguments에 들어가 데이터를 입력한다
+** NumberformatException  : 숫자형식 오류시 continue로 다시 for문을 이용할 수 있도록하는 방법으로 정수가 아닌 것을 거른다.
+
+
+
