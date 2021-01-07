@@ -2,3 +2,25 @@
 
 풀이)
 
+import java.io.*;
+import java.util.*;
+
+public class q5{
+  public staic void main(String[]args) throws IOException{
+  Scanner scan = new Scanner(System.in);
+  int a = scan.nextInt();
+  int b = scan.nextInt();
+  
+  int count, max =0;
+  if(a >= b){count = a};
+  else count=b;
+  
+  for(int i=0; i<=count; i++){
+    if(a % i == 0 & b % i ==0){ //두 숫자를 동일한 수로 나누었을때 둘다 나머지가 0 = 최대 공약수 
+      max = i;
+    }
+  }
+  System.out.println("최대공약수 : " + max);
+  }
+}
+
