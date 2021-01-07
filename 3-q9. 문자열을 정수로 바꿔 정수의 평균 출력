@@ -11,3 +11,38 @@ C:\tmp>java Average 2 3 4
 C:\tmp>
 
 풀이)
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
+
+public class q9_Average {
+	public static void main(String[]args) throws IOException {
+		System.out.print("정수를 입력해주세요 : ");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		List<Integer>arr = new ArrayList<>();
+		int hab=0;
+		 
+		
+			st= new StringTokenizer(br.readLine(), " ");
+			while(st.hasMoreTokens()) {
+				int n = Integer.parseInt(st.nextToken());
+				arr.add(n);
+				if(!st.hasMoreTokens()) break;
+			}
+			System.out.print("java arr[] : ");
+			for(int k=0; k<arr.size(); k++) {
+				hab += arr.get(k);
+				System.out.print(arr.get(k) + " ");
+			}
+			
+			int answer = hab / arr.size();
+			System.out.println();
+			System.out.println("java Average : " + answer);
+	}
+}
