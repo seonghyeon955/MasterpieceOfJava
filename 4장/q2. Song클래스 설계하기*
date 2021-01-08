@@ -1,0 +1,62 @@
+노래를 나타내는 Song이라는 클래스를 설계하라
+Song클래스는 다음과 같은 필드를 갖는다 
+-노래의 제목을 나타내는 title
+-가수를 나타내는 artist
+-노래가 속한 앨범제목을 나타내는 album
+-노래의 작곡가를 나타내는 composer, 작곡가는 여러명 있을 수 있다
+-노래가 발표된 연도를 나타내는 year
+-노래가 속한 앨범에서의 트랙번호를 나타내는 track
+
+생성자는 기본 생성자와 모든 필드를 초기화하는 생성자를 작성하고, 노래의정보를 화면에 출력하는 show() 메소드도 작성하라.
+ABBA "Dancing Queen"노래를 Song객체로 생성하고 show()를 이용, 이 노래의 정보를 출력하는 프로그램을 작성하라.
+
+
+풀이)
+
+public class Song{
+  String title;
+  String artist;
+  String album;
+  String composer[];
+  int year;
+  int track;
+  
+  Song(){//기본생성자
+    this(null, null, null, null, 0, 0);  
+  }
+  
+  Song(String title, String artist, String album, String composer[], int year, int track){//모든 생성자 초기화
+    this.title = title;
+    this.artist= artist;
+    this.album= album;
+    this.composer = composer;
+    this.year = year;
+    this.track = track;
+  }
+  
+  void show(){
+    System.out.println("노래제목 : " + title);
+		System.out.println("가수 : " + artist);
+		System.out.println("앨범 : " + album);
+		System.out.print("작곡가 : " );
+      for(int i=0; i<composer.length; i++){
+        System.out.print(composer[i]);
+        if(i < composer.length-1){
+          System.out.print(", ");
+        }
+      }
+      System.out.println();
+    System.out.println("발표연도 : " + year);
+		System.out.println("트랙번호 : " + track);
+  
+  }//show end
+  
+  
+  public static void main(String[]args){
+    Song s = new Song{"Dancing Queen", "ABBA", "Arrival", new String[] {"BennyAndersson", "BjornUlvaeus", "StigAnderson" }, 1976, 100 };
+    s.show();
+  }
+
+}
+
+
