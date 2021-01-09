@@ -7,3 +7,48 @@ static int[] doubleToInt(double [] source);/double > int배열로 변환
 풀이)
 
 
+public class q3_ArrayUtility {
+	static double[] intToDouble(int[]source) {
+		double[]resource = new double[source.length];
+		for(int i=0; i<source.length; i++) {
+			resource[i] = (double)source[i];
+		}
+		return resource;
+	}
+	
+	static int[] doubleToInt(double[]source) {
+		int[]resource = new int[source.length];
+		for(int i=0; i<source.length; i++) {
+			resource[i] = (int)source[i];
+		}
+		
+		return resource;
+	}
+	
+	public static void main(String[]args) {
+		int[] num_int = {1,8,0,5};
+		double[] num_double = {9.0, 5.0, 0.9, 1.4};
+		
+		int[]new_int = new int[num_double.length];
+		double[]new_double = new double[num_int.length];
+		
+		new_int= q3_ArrayUtility.doubleToInt(num_double);
+		new_double = q3_ArrayUtility.intToDouble(num_int);
+		
+		System.out.print("double->int : ");
+		for(int i=0; i<new_int.length ; i++) {
+			System.out.print(new_int[i] + " ");
+		}
+		System.out.println();
+		
+		System.out.print("int->double : ");
+		for(int i=0; i<new_double.length; i++) {
+			System.out.print(new_double[i] + " ");
+		}
+		System.out.println();
+		
+	}
+}
+
+**메소드를 실행하기 전, 메소드의 값을 저장할 텅 빈 배열을 미리 만들어 둬야 한다!
+**배열,리스트와 같이 한묶음 속 들어있는 여러내용을 출력할때는 무조건 for문 사용
