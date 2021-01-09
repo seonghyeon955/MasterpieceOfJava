@@ -1,4 +1,0 @@
-다음 두개의 static을 가진 ArrayUtility2 클래스를 만들어 보자. ArrayUtility2 클래스를 이용하는 테스트용 프로그램도 함께 작성하라.
-
-static int[] concat(int [] sq, int [] s2); //s1과 s2를 연결한 새로운 배열 리턴
-static int[] remove(int [] sq, int [] s2); //s1과 s2 배열의 숫자를 모두 삭제한 새로운 배열 리턴 
