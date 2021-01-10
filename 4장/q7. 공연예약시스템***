@@ -1,0 +1,177 @@
+공연 예약 시스템의 내용은 다음과 같다.
+
+-공연은 하루에 한 번 있다
+-좌석은 S,A,B석 타입이 있으며 모두 10석의 좌석이 있다.
+-공연 예약 시스템의 메뉴는 "예약","조회","취소","끝내기"가 있다.
+예약은 한 자리만 예약할 수 있고 좌석타입, 예약자 이름, 좌석 번호를 순서대로 입력받아 예약한다.
+-조회는 모든 종류의 좌석을 표시한다.
+-취소는 예약자의 이름을 입력하여 취소한다.
+-없는 이름, 없는 번호, 없는 메뉴, 잘못된 취소등에 대해 오류 메시지를 출력하고 사용자가 다시 시도하도록 한다.
+
+출력예)
+예약<1>, 조회<2>, 취소<3>, 끝내기<4> 
+>>1
+좌석구분 S<1>, A<2>, B<3>
+>>1 
+>>S --- --- --- --- --- --- --- --- --- ---
+이름 >> 설리번 
+번호 >> 1
+
+예약<1>, 조회<2>, 취소<3>, 끝내기<4> 
+>>1
+좌석구분 S<1>, A<2>, B<3>
+>>2
+>>A --- --- --- --- --- --- --- --- --- ---
+이름 >> 와조스키
+번호 >> 5
+
+예약<1>, 조화<2>, 취소<3>, 끝내기<4>
+>>2
+>>S 설리번 --- --- --- --- --- --- --- --- ---
+>>A --- --- --- --- 와조스키 --- --- --- --- ---
+>>B --- --- --- --- --- --- --- --- --- ---
+<<조회를 완료하였습니다>>
+
+예약<1>, 조화<2>, 취소<3>, 끝내기<4>
+>>3
+>>A --- --- --- --- 와조스키 --- --- --- --- ---
+이름 >> 와조스키
+
+예약<1>, 조화<2>, 취소<3>, 끝내기<4>
+>>4
+
+
+
+풀이)
+
+
+import java.util.Scanner;
+
+public class q6{
+	public static void main(String[]args) {
+		boolean a = true;
+		
+		String name = ""; 
+		int seatType = 0;
+		int seatNum = 0;
+		
+		Booking book = new Booking(name, seatType, seatNum);
+		Scanner scan = new Scanner(System.in);
+		
+		while(a) {
+			System.out.print("공연 예약 시스템에 입장하셨습니다.\n예약<1>, 조회<2>, 취소<3>, 끝내기<4> \n");
+			System.out.print("원하시는 번호를 선택해주세요 : ");
+			int num = scan.nextInt();
+			switch(num) {
+				case 1: 
+					book.bookSeat();
+					break;
+				case 2:
+					book.searchBook();
+					break;
+				case 3:
+					book.cancelSeat();
+					break;
+				case 4:
+					System.out.print("예약시스템을 종료합니다.");
+					a = false;
+					break;
+				default :
+					System.out.println("잘못된 숫자를 입력하셨습니다.다시 입력해주세요.");
+			}
+		}
+		
+	}
+}
+
+class Booking{
+	final int SEATCNT = 10;
+	Scanner scan = new Scanner(System.in);
+	String name = ""; 
+	int seatType = 0;
+	int seatNum = 0;
+	
+	String[]seatTypeList = {"S", "A", "B"};
+	String[][] Seats = new String[seatTypeList.length][SEATCNT];
+	
+	public Booking(String name, int seatType, int seatNum) {
+		this.name = name;
+		this.seatType = seatType;
+		this.seatNum = seatNum;
+	}
+	
+	void bookSeat() {//좌석 예약
+		
+		System.out.print("성명을 입력해주세요 : ");
+		name = scan.next();
+		System.out.print("성명>> " + name + "\n");
+		while(true) {
+			System.out.print("좌석타입 :  ");
+			for(int i=0; i<seatTypeList.length; i++) {
+				System.out.print(seatTypeList[i] + "<" +(i+1)+ ">" + " ");
+				if(i+1 >seatTypeList.length) break;
+			}
+			System.out.println();
+			System.out.print("좌석타입을 선택해주세요. : ");
+			seatType = scan.nextInt()-1;
+			String[] realseat = new String[3];
+			for(int i=0; i<seatTypeList.length; i++) {
+				realseat[i] = seatTypeList[i];
+			}
+			System.out.print("좌석타입 " + realseat[seatType] + "의 좌석 1~10 중 원하시는 좌석번호를 선택하여 입력해주세요 :  " );
+			seatNum = scan.nextInt();
+			System.out.print("번호>> " + seatNum);
+			System.out.println();
+			
+			if(seatNum > 10 || seatNum < 0) {
+				System.out.println("잘못된 번호입니다.다시 입력해주세요.");
+				seatNum = scan.nextInt();
+				
+			}
+			if(Seats[seatType][seatNum] !=null) { 
+				System.out.println("이미 예약이 완료된 자리입니다. 다시 시도해주세요.");
+			}else {
+				Seats[seatType][seatNum] = name;
+				System.out.print(name + "님의 좌석 " + realseat[seatType] + seatNum);
+				System.out.println(" 예약이 완료되었습니다. 감사합니다.");
+				break;
+			}
+		}//while end 
+		System.out.println();
+		
+	}//bookSeat end
+	
+	void searchBook() {//좌석 조회
+		System.out.println("----------좌석 조회----------");
+		for(int i=0; i<seatTypeList.length; i++) {
+			System.out.print(seatTypeList[i] + ">>");
+			for(int k=0; k<SEATCNT ; k++) {
+				if(Seats[i][k] == null) {
+					System.out.print("___" + " ");
+				}else System.out.print(Seats[i][k] + " ");
+			}
+			System.out.println();
+		}
+		
+	}//searchBook end
+	
+	void cancelSeat() {//좌석취소
+		Scanner scan = new Scanner(System.in);
+		System.out.println("----------좌석 취소----------");
+		System.out.print("예약자의 성함을 입력해주세요 : ");
+		String name = scan.next();
+		for(int i=0; i<seatTypeList.length; i++) {
+			for(int k=0; k<Seats[i].length; k++) {
+				if(name.equals(Seats[i][k])) {
+					Seats[i][k] = "___";
+					System.out.println("예약이 취소되었습니다.");
+					break;
+				}
+			}
+		}
+	}// cancelSeat end
+	
+	
+	
+}
+
