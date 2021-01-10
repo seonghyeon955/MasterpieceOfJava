@@ -21,4 +21,110 @@ Add,Sub,Mul,Div중 이 연산을 실행할 수 있는 객체를 생성하고 set
 
 풀이)
 
+main이 돌아가는 메인클래스 하나/
+더하기/빼기/곱하기/나누기 기능을 실행하는 클래스 각 하나씩/
+위 기능을 공통으로 실행하는 틀로 쓰일 인터페이스 하나
 
+public class q5{
+  public static void main(String[] args)throws IOException{
+    System.out.print("두 정수와 연산자를 입력해주세요 >>");
+    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+    int a = Integer.parseInt(st.nextToken());
+    int b = Integer.parseInt(st.nextToken());
+    String operator = st.nextToken(); //연산자 
+    Calculate cClass = null; //빈클래스 생성 
+   
+   if(operator.equals("+")){
+    cClass = new Add(); //Add타입의 빈 클래스 생성 
+   }else if(operator.equals("-")){
+    cClass = new Sub();
+   }else if(operator.equals("*")){
+    cClass = new Mul();
+   }else if(operator.equals("/")){
+    cClass = new Div();
+   }
+   cClass.setValue(a,b);
+   System.out.println( cClass.startCalculate(a,b) );
+  }
+}
+
+public interface Calculate{// 연산을 시행하는 클래스는 인터페이스를 오버라이딩 하여 메소드의 내용만을 바꿔 실행한다.
+  void setValue(int a, int b);
+  int startCalculate(int a, int b);
+}
+
+class Add implements Calculate{
+  private int a,b;
+  //Override
+  public void setValue(int a, int b){
+    this.a = a;
+    this.b = b;
+  };
+  
+  public int startCalculate(int a, int b){
+    int result=0;
+    result = a+b;
+    return result;
+  }
+}// Add end
+
+class Sub implements Calculate{
+	 private int a,b;
+	@Override
+	public void setValue(int a, int b) {
+		this.a = a;
+		this.b = b;
+		
+	}
+
+	@Override
+	public int startCalculate(int a, int b) {
+		int result = 0;
+		if(a>b) result = a-b;
+		else if(a<b) result= b-a;
+		
+		return result;
+	}
+	 
+ }
+ 
+ class Mul implements Calculate{
+	 private int a,b;
+	@Override
+	public void setValue(int a, int b) {
+		this.a = a;
+		this.b = b;
+		
+	}
+
+	@Override
+	public int startCalculate(int a, int b) {
+		int result=0;
+		result = a * b;
+		return result;
+	}
+	 
+	 
+ }
+ 
+ class Div implements Calculate{
+	 private int a,b;
+	@Override
+	public void setValue(int a, int b) {
+		this.a = a;
+		this.b = b;
+		
+	}
+
+	@Override
+	public int startCalculate(int a, int b) {
+		int result = 0;
+		if(a != 0 && b != 0) {
+			if(a>b) result = a/b;
+			else if(b>a) result= b/a;
+		}
+		return result;
+	}
+	 
+ }
